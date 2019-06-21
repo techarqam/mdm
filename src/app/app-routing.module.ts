@@ -12,6 +12,7 @@ import { ViewCategoryComponent } from './Components/Categories/category/view-cat
 import { AddCategoryComponent } from './Components/Categories/category/add-category/add-category.component';
 import { ViewSubCategoryComponent } from './Components/Categories/sub-category/view-sub-category/view-sub-category.component';
 import { AddSubCategoryComponent } from './Components/Categories/sub-category/add-sub-category/add-sub-category.component';
+import { NegAuthGuard } from './Guards/Auth/neg-auth.guard';
 
 const routes: Routes = [
   {
@@ -21,12 +22,13 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [NegAuthGuard]
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'banners',

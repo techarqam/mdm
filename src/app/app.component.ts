@@ -45,18 +45,21 @@ export class AppComponent {
     },
     {
       title: "Faq's",
-      url: '/',
+      url: '/faqs',
       icon: 'help'
     },
     {
       title: 'Settings',
-      url: '/',
+      url: '/settings',
       icon: 'cog'
     },
 
 
   ];
   userId: string = '';
+
+  activePage: any;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

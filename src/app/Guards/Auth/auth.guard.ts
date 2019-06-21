@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { CommonService } from 'src/app/Services/Common/common.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private commonService: CommonService
+    public commonService: CommonService,
+    public db: AngularFirestore,
   ) { }
 
   canActivate(
@@ -24,10 +26,17 @@ export class AuthGuard implements CanActivate {
     return new Promise((resolve, reject) => {
       firebase.auth().onAuthStateChanged((user: firebase.User) => {
         if (user) {
-          resolve(true);
+          this.db.doc(`/Admins/${user.uid}`).get().subscribe(snap => {
+            if (snap.exists) {
+              resolve(true);
+            } else {
+              this.authService.logout();
+              this.commonService.presentToast("You are not an Admin");
+              resolve(false)
+            }
+          })
         } else {
           this.router.navigate(['/login']);
-          // this.commonService.presentToast("You are not Logged in");
           resolve(false);
         }
       });

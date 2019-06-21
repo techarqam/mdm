@@ -30,7 +30,7 @@ export class AuthService {
 
   loginM(data) {
     return new Promise<any>((resolve, reject) => {
-      this.fireAuth.auth.signInWithEmailAndPassword(data.mail, data.pass).then(res => { }, err => reject(err));
+      this.fireAuth.auth.signInWithEmailAndPassword(data.email, data.pass).then(res => { }, err => reject(err));
     });
   }
 

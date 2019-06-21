@@ -1,43 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { BannersService } from '../../../Services/banners/banners.service';
-import { CommonService } from '../../../Services/Common/common.service';
 import { NavController } from '@ionic/angular';
+import { CommonService } from '../../../../Services/Common/common.service';
+import { CategoriesService } from '../../../../Services/Categories/categories.service';
 
 @Component({
-  selector: 'app-add-banners',
-  templateUrl: './add-banners.component.html',
-  styleUrls: ['./add-banners.component.scss'],
+  selector: 'app-add-category',
+  templateUrl: './add-category.component.html',
+  styleUrls: ['./add-category.component.scss'],
 })
-export class AddBannersComponent implements OnInit {
+export class AddCategoryComponent implements OnInit {
 
   img1: any;
   img2: any;
 
 
-
   constructor(
-    public bannerService: BannersService,
+    public catService: CategoriesService,
     public commonService: CommonService,
     public navCtrl: NavController,
   ) { }
+
 
   ngOnInit() { }
 
 
 
+
   UploadPic() {
-    let data = this.bannerService.banner.value;
+    let data = this.catService.category.value;
     if (data.name) {
       if (this.img2) {
-        this.bannerService.addBanner(data.name, this.img2).then(() => {
-          this.navCtrl.navigateRoot('/banners');
+        this.catService.addCategory(data.name, this.img2).then(() => {
+          this.navCtrl.navigateRoot('/categories');
         });
-      } else { this.commonService.presentToast("Select an image for the Banner") }
-    } else { this.commonService.presentToast("Enter Name of the Banner") }
+      } else { this.commonService.presentToast("Select an image for the Category") }
+    } else { this.commonService.presentToast("Enter Name of the Category") }
     // console.log(data);
   }
-
-
 
 
 

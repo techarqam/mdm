@@ -25,7 +25,7 @@ export class AppComponent {
     },
     {
       title: 'Categories',
-      url: '/',
+      url: '/categories',
       icon: 'logo-buffer'
     },
     {

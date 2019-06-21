@@ -8,6 +8,10 @@ import { ProductsComponent } from './Components/MainMenu/products/products.compo
 import { SellersComponent } from './Components/MainMenu/sellers/sellers.component';
 import { UsersComponent } from './Components/MainMenu/users/users.component';
 import { AddBannersComponent } from './Components/banners/add-banners/add-banners.component';
+import { ViewCategoryComponent } from './Components/Categories/category/view-category/view-category.component';
+import { AddCategoryComponent } from './Components/Categories/category/add-category/add-category.component';
+import { ViewSubCategoryComponent } from './Components/Categories/sub-category/view-sub-category/view-sub-category.component';
+import { AddSubCategoryComponent } from './Components/Categories/sub-category/add-sub-category/add-sub-category.component';
 
 const routes: Routes = [
   {
@@ -43,6 +47,22 @@ const routes: Routes = [
   {
     path: 'add-banner',
     component: AddBannersComponent,
+  },
+  {
+    path: 'categories',
+    component: ViewCategoryComponent,
+  },
+  {
+    path: 'add-categories',
+    component: AddCategoryComponent,
+  },
+  {
+    path: 'sub-categories/:id',
+    component: ViewSubCategoryComponent,
+  },
+  {
+    path: 'add-subCategories/:id',
+    component: AddSubCategoryComponent,
   },
 
 ];

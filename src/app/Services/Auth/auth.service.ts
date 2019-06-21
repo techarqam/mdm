@@ -16,16 +16,6 @@ export class AuthService {
     pass: new FormControl(""),
   });
 
-  signUp = new FormGroup({
-    storeName: new FormControl(""),
-    ownerName: new FormControl(""),
-    phonenumber: new FormControl(""),
-    storeCategory: new FormControl(""),
-    Status: new FormControl("Unverified"),
-    email: new FormControl(""),
-    pass: new FormControl(""),
-    timeStamp: new FormControl(moment().format())
-  });
 
 
   constructor(
@@ -45,19 +35,6 @@ export class AuthService {
   }
 
 
-  signUpM(data) {
-    return new Promise<any>((resolve, reject) => {
-      this.fireAuth.auth.createUserWithEmailAndPassword(data.email, data.pass).then(res => {
-
-        this.firestore
-          .collection(`Sellers`).doc(`${res.user.uid}`)
-          .set(data)
-          .then(res => { }, err => reject(err));
-
-
-      }, err => reject(err));
-    });
-  }
 
 
 

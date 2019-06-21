@@ -19,30 +19,41 @@ export class AppComponent {
       icon: 'analytics'
     },
     {
-      title: 'Sales',
-      url: '/sales',
-      icon: 'cash'
-    },
-    {
-      title: 'Orders',
-      url: '/orders',
-      icon: 'cart'
-    },
-    {
-      title: 'Inventory',
-      url: '/inventory',
-      icon: 'logo-buffer'
-    },
-    {
-      title: 'Profile',
-      url: '/profile',
+      title: 'Sellers',
+      url: '/sellers',
       icon: 'person'
     },
     {
-      title: 'Help',
-      url: '/help',
-      icon: 'ios-help-buoy'
+      title: 'Categories',
+      url: '/',
+      icon: 'logo-buffer'
     },
+    {
+      title: 'Products',
+      url: '/products',
+      icon: 'cube'
+    },
+    {
+      title: 'Users',
+      url: '/users',
+      icon: 'people'
+    },
+    {
+      title: 'Banners',
+      url: '/banners',
+      icon: 'images'
+    },
+    {
+      title: "Faq's",
+      url: '/',
+      icon: 'help'
+    },
+    {
+      title: 'Settings',
+      url: '/',
+      icon: 'cog'
+    },
+
 
   ];
   userId: string = '';

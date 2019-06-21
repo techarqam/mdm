@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './Components/MainMenu/dashboard/dashboard.component';
-import { HelpComponent } from './Components/MainMenu/help/help.component';
-import { InventoryComponent } from './Components/MainMenu/inventory/inventory.component';
-import { OrdersComponent } from './Components/MainMenu/orders/orders.component';
-import { ProfileComponent } from './Components/MainMenu/profile/profile.component';
-import { SalesComponent } from './Components/MainMenu/sales/sales.component';
 import { LoginComponent } from './Components/Auth/login/login.component';
-import { SignUpComponent } from './Components/Auth/sign-up/sign-up.component';
-import { AddProductComponent } from './Components/Product/add-product/add-product.component';
 import { AuthGuard } from './Guards/Auth/auth.guard';
+import { BannersComponent } from './Components/MainMenu/banners/banners.component';
+import { ProductsComponent } from './Components/MainMenu/products/products.component';
+import { SellersComponent } from './Components/MainMenu/sellers/sellers.component';
+import { UsersComponent } from './Components/MainMenu/users/users.component';
+import { AddBannersComponent } from './Components/banners/add-banners/add-banners.component';
 
 const routes: Routes = [
   {
@@ -17,44 +15,35 @@ const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full'
   },
-
+  {
+    path: 'login',
+    component: LoginComponent
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
     // canActivate: [AuthGuard]
   },
   {
-    path: 'help',
-    component: HelpComponent
+    path: 'banners',
+    component: BannersComponent,
   },
   {
-    path: 'inventory',
-    component: InventoryComponent
+    path: 'products',
+    component: ProductsComponent,
   },
   {
-    path: 'orders',
-    component: OrdersComponent
+    path: 'sellers',
+    component: SellersComponent,
   },
   {
-    path: 'profile',
-    component: ProfileComponent
+    path: 'users',
+    component: UsersComponent,
   },
   {
-    path: 'sales',
-    component: SalesComponent
+    path: 'add-banner',
+    component: AddBannersComponent,
   },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'sign-up',
-    component: SignUpComponent
-  },
-  {
-    path: 'add-product',
-    component: AddProductComponent,
-  }
 
 ];
 

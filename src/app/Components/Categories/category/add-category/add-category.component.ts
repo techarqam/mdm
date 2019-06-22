@@ -35,7 +35,6 @@ export class AddCategoryComponent implements OnInit {
         });
       } else { this.commonService.presentToast("Select an image for the Category") }
     } else { this.commonService.presentToast("Enter Name of the Category") }
-    // console.log(data);
   }
 
 

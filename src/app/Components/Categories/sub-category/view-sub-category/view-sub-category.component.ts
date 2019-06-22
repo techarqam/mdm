@@ -47,7 +47,6 @@ export class ViewSubCategoryComponent implements OnInit {
     this.catService.getSingleCategory(this.docId).subscribe(snap => {
       this.cat = snap.payload.data();
       this.cat.id = snap.payload.id;
-      console.log(this.cat)
     });
 
   }

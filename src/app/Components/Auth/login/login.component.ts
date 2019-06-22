@@ -25,15 +25,20 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit() {
-    let data = this.authService.signIn.value;
-    this.authService.loginM(data).then(res => {
-      this.authService.signIn.reset();
-    }).catch(err => {
-      this.commonService.presentToast(err.message);
-    }).then(() => {
-      if (this.authService.isLoggedIn()) {
-        this.router.navigateByUrl('/dashboard');
-      }
-    });
+    if (this.authService.signIn.valid) {
+      let data = this.authService.signIn.value;
+      this.authService.loginM(data).then(res => {
+        this.authService.signIn.reset();
+      }).catch(err => {
+        this.commonService.presentToast(err.message);
+      }).then(() => {
+        if (this.authService.isLoggedIn()) {
+          this.router.navigateByUrl('/dashboard');
+        }
+      });
+    } else {
+      this.commonService.presentToast("Enter proper credentials");
+    }
   }
+
 }

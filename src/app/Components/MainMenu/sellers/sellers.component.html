@@ -1,3 +1,25 @@
-<p>
-  sellers works!
-</p>
+<app-menu-header></app-menu-header>
+
+<ion-content>
+
+  <form [formGroup]="this.sellerService.status">
+    <ion-item>
+      <ion-label position="floating">Status</ion-label>
+      <ion-select formControlName="name" (ionChange)="filterSellers(this.sellerService.status.value.name)">
+        <ion-select-option value="">All</ion-select-option>
+        <ion-select-option value="Verified">Verified</ion-select-option>
+        <ion-select-option value="Unverified">Unverified</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form>
+
+  <app-loader *ngIf="showLoader"></app-loader>
+  <div *ngFor="let s of sellers | async">
+    <p>{{s.payload.doc.data().storeName}}</p>
+    <p>{{s.payload.doc.data().Status}}</p>
+    <ion-button fill="clear" (click)="sellerDetail(s.payload.doc.id)">
+      View More
+    </ion-button>
+  </div>
+
+</ion-content>

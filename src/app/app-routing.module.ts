@@ -13,6 +13,8 @@ import { AddCategoryComponent } from './Components/Categories/category/add-categ
 import { ViewSubCategoryComponent } from './Components/Categories/sub-category/view-sub-category/view-sub-category.component';
 import { AddSubCategoryComponent } from './Components/Categories/sub-category/add-sub-category/add-sub-category.component';
 import { NegAuthGuard } from './Guards/Auth/neg-auth.guard';
+import { NotificationComponent } from './Components/notifications/notification/notification.component';
+import { SellerDetailComponent } from './Components/Sellers/seller-detail/seller-detail.component';
 
 const routes: Routes = [
   {
@@ -65,6 +67,14 @@ const routes: Routes = [
   {
     path: 'add-subCategories/:id',
     component: AddSubCategoryComponent,
+  },
+  {
+    path: 'notifications',
+    component: NotificationComponent,
+  },
+  {
+    path: 'seller-details/:id',
+    component: SellerDetailComponent,
   },
 
 ];

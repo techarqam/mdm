@@ -102,7 +102,6 @@ export class AppComponent {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
           }
         }, {
           text: "I'm Sure",

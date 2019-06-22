@@ -40,7 +40,6 @@ export class AddSubCategoryComponent implements OnInit {
         });
       } else { this.commonService.presentToast("Select an image for the Sub-Category") }
     } else { this.commonService.presentToast("Enter Name of the Sub-Category") }
-    // console.log(data);
   }
 
 

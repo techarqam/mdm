@@ -32,6 +32,10 @@ import { AddCategoryComponent } from './Components/Categories/category/add-categ
 import { ViewCategoryComponent } from './Components/Categories/category/view-category/view-category.component';
 import { AddSubCategoryComponent } from './Components/Categories/sub-category/add-sub-category/add-sub-category.component';
 import { ViewSubCategoryComponent } from './Components/Categories/sub-category/view-sub-category/view-sub-category.component';
+import { NotificationComponent } from './Components/notifications/notification/notification.component';
+import { NotificationPopComponent } from './Components/notifications/notification-pop/notification-pop.component';
+import { NotificationsService } from './Services/Notifications/notifications.service';
+import { SellerDetailComponent } from './Components/Sellers/seller-detail/seller-detail.component';
 
 @NgModule({
   declarations: [
@@ -49,12 +53,16 @@ import { ViewSubCategoryComponent } from './Components/Categories/sub-category/v
     AddCategoryComponent,
     ViewCategoryComponent,
     AddSubCategoryComponent,
-    ViewSubCategoryComponent
+    ViewSubCategoryComponent,
+    NotificationComponent,
+    NotificationPopComponent,
+    SellerDetailComponent,
   ],
   entryComponents: [
     MenuHeaderComponent,
     BackHeaderComponent,
     LoaderComponent,
+    NotificationPopComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +82,7 @@ import { ViewSubCategoryComponent } from './Components/Categories/sub-category/v
     SellersService,
     UsersService,
     BannersService,
-
+    NotificationsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

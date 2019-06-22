@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CommonService } from '../Common/common.service';
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
 import * as moment from 'moment';
@@ -12,14 +12,22 @@ export class CategoriesService {
 
 
   category = new FormGroup({
-    name: new FormControl(""),
+    name: new FormControl("", Validators.compose([
+      Validators.required,
+      Validators.minLength(4)
+    ])),
     imageUrl: new FormControl(""),
     timeStamp: new FormControl(moment().format()),
   });
   subCategory = new FormGroup({
-    name: new FormControl(""),
+    name: new FormControl("", Validators.compose([
+      Validators.required,
+      Validators.minLength(4)
+    ])),
     imageUrl: new FormControl(""),
-    category: new FormControl(""),
+    category: new FormControl("", Validators.compose([
+      Validators.required,
+    ])),
     timeStamp: new FormControl(moment().format()),
   });
 

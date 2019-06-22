@@ -34,7 +34,6 @@ export class AddBannersComponent implements OnInit {
         });
       } else { this.commonService.presentToast("Select an image for the Banner") }
     } else { this.commonService.presentToast("Enter Name of the Banner") }
-    // console.log(data);
   }
 
 

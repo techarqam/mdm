@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../../Services/products/products.service';
+import { Observable } from 'rxjs';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-products',
@@ -7,8 +10,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  products: Observable<any>;
+  showLoader: boolean = false;
+  cats: Observable<any>;
 
-  ngOnInit() {}
+  constructor(
+    public prodService: ProductsService,
+    public menuCtrl: MenuController,
+  ) {
+    this.menuCtrl.enable(true);
+  }
+
+  ngOnInit() {
+    this.getProducts();
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.showLoader = true;
+    this.cats = this.prodService.getCategories();
+    this.cats.subscribe(() => { this.showLoader = false });
+  }
+
+  getProducts() {
+    this.showLoader = true;
+    this.products = this.prodService.getProducts();
+    this.products.subscribe(() => { this.showLoader = false });
+  }
+  filterProd(catId) {
+    if (catId) {
+      this.getProductsbyCat(catId);
+    } else {
+      this.getProducts();
+    }
+  }
+
+
+  getProductsbyCat(catId) {
+    this.showLoader = true;
+    this.products = this.prodService.getCollbyCat(catId);
+    this.products.subscribe(() => { this.showLoader = false });
+  }
 
 }

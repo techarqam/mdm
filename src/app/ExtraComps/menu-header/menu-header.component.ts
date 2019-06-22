@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { NotificationPopComponent } from '../../Components/notifications/notification-pop/notification-pop.component';
 
 @Component({
   selector: 'app-menu-header',
@@ -7,8 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuHeaderComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {}
+  constructor(
+    public popoverController: PopoverController,
+  ) { }
 
+  ngOnInit() { }
+
+  async presentNotifications(ev: any) {
+    const popover = await this.popoverController.create({
+      component: NotificationPopComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+  }
 }

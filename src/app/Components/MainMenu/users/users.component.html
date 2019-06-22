@@ -1,3 +1,9 @@
-<p>
-  users works!
-</p>
+<app-menu-header></app-menu-header>
+
+<ion-content>
+
+  <app-loader *ngIf="showLoader"></app-loader>
+  <p *ngFor="let u of users | async">
+    {{u.payload.doc.data().storeName}}
+  </p>
+</ion-content>

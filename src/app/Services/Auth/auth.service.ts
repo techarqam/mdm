@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from "@angular/fire/firestore";
 import { first } from 'rxjs/operators';
@@ -12,8 +12,14 @@ export class AuthService {
 
 
   signIn = new FormGroup({
-    email: new FormControl(""),
-    pass: new FormControl(""),
+    email: new FormControl("", Validators.compose([
+      Validators.required,
+      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+    ])),
+    pass: new FormControl("", Validators.compose([
+      Validators.required,
+      Validators.minLength(6)
+    ])),
   });
 
 

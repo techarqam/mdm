@@ -1,0 +1,105 @@
+<app-menu-header></app-menu-header>
+
+
+<ion-content>
+
+    <app-loader *ngIf="showLoader"></app-loader>
+
+    <ion-grid *ngIf="!showLoader">
+        <ion-row>
+            <ion-col size="12" size-md="6">
+
+
+                <ion-card>
+                    <ion-card-content>
+                        <ion-item>
+                            <ion-button class="ion-float-right" (click)="confirmVerify()" *ngIf="!verified">Verify Product</ion-button>
+                            <ion-button class="ion-float-right" (click)="confirmUnVerify()" *ngIf="verified">Unverify Product</ion-button>
+                        </ion-item>
+                        <ion-item>
+                            <p slot="start" color="primary">Product Name</p>
+                            <p slot="end">{{product.name}}</p>
+                        </ion-item>
+
+
+                        <ion-item>
+                            <p item-start color="primary">Category</p>
+                            <p slot="end">{{product.categoryName}}</p>
+                        </ion-item>
+
+                        <ion-item>
+                            <p item-start color="primary">Sub-Category</p>
+                            <p slot="end">{{product.subCategoryName}}</p>
+                        </ion-item>
+
+                        <ion-item>
+                            <p item-start color="primary">Seller</p>
+                            <ion-button slot="end" fill="outline" (click)="gtSeller(product.storeId)">
+                                {{product.sellerName}}
+                            </ion-button>
+                        </ion-item>
+
+                        <ion-item>
+                            <p item-start color="primary">Quantity</p>
+                            <p slot="end">{{product.quantity}}</p>
+                        </ion-item>
+
+                        <!-- <ion-item *ngIf="product.Color">
+                            <p item-start color="primary">Color</p>
+                            <p slot="end">{{product.Color}}</p>
+                        </ion-item> -->
+
+                        <!-- <ion-item *ngIf="product.Size">
+                            <p item-start color="primary">Size</p>
+                            <p slot="end">{{product.Size}}</p>
+                        </ion-item> -->
+
+
+                        <ion-item>
+                            <p item-start color="primary">Sales</p>
+                            <p slot="end">{{product.sales}}</p>
+                        </ion-item>
+
+
+                        <ion-item>
+                            <p item-start color="primary">Status</p>
+                            <p slot="end">{{product.status}}</p>
+                        </ion-item>
+
+
+                        <ion-item>
+                            <p item-start color="primary">Product Added</p>
+                            <p slot="end">{{product.timestamp | date : 'short'}}</p>
+                        </ion-item>
+
+
+                        <!-- <ion-item>
+          <p item-start  color="primary"></p>
+          <p slot="end">{{product.}}</p>
+        </ion-item> -->
+
+
+
+
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+            <ion-col size="12" size-md="6">
+                <ion-card>
+                    <ion-card-content>
+                        <img [src]="product.ImageUrl" class="prodImg" />
+                    </ion-card-content>
+                </ion-card>
+                <ion-card *ngIf="product.id">
+                    <ion-card-content>
+                        <ion-button class="ion-float-right" (click)="viewBar()">Print</ion-button>
+                        <div class="barD">
+                            <ngx-qrcode [qrc-value]="product.id"></ngx-qrcode>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

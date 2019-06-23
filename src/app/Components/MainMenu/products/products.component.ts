@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../Services/products/products.service';
 import { Observable } from 'rxjs';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-products',
@@ -17,6 +17,7 @@ export class ProductsComponent implements OnInit {
   constructor(
     public prodService: ProductsService,
     public menuCtrl: MenuController,
+    public navCtrl: NavController,
   ) {
     this.menuCtrl.enable(true);
   }
@@ -51,5 +52,7 @@ export class ProductsComponent implements OnInit {
     this.products = this.prodService.getCollbyCat(catId);
     this.products.subscribe(() => { this.showLoader = false });
   }
-
+  prodDetail(id) {
+    this.navCtrl.navigateForward(`/product-details/${id}`)
+  }
 }

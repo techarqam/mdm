@@ -72,6 +72,9 @@ export class CategoriesService {
   getSingleCategory(id) {
     return this.firestore.doc(`Categories/${id}`).snapshotChanges();
   }
+  getSingleSubCategory(id) {
+    return this.firestore.doc(`SubCategories/${id}`).snapshotChanges();
+  }
 
   addSubCategory(subCatName, subCatImg, cat) {
     return firebase.storage().ref("SubCategories/" + subCatName).put(subCatImg).then(() => {

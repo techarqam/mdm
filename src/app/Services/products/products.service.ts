@@ -25,5 +25,20 @@ export class ProductsService {
   getCollbyCat(catId) {
     return this.db.collection("Products", ref => ref.where("category", "==", catId)).snapshotChanges()
   }
+  getSingleProduct(docId) {
+    return this.db.doc(`Products/${docId}`).snapshotChanges();
+  }
 
+  verifyProduct(id) {
+    return this.db.doc(`Products/${id}`).set({ status: "Verified" }, { merge: true });
+  }
+
+  unverifyProduct(id) {
+    return this.db.doc(`Products/${id}`).set({ status: "Pending" }, { merge: true });
+  }
+
+  getProductbySeller(storeId) {
+    return this.db.collection("Products", ref => ref.where("storeId", "==", storeId)).snapshotChanges()
+
+  }
 }

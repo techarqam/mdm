@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { firebaseConfig } from './firebaseConfig';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
@@ -36,6 +37,9 @@ import { NotificationComponent } from './Components/notifications/notification/n
 import { NotificationPopComponent } from './Components/notifications/notification-pop/notification-pop.component';
 import { NotificationsService } from './Services/Notifications/notifications.service';
 import { SellerDetailComponent } from './Components/Sellers/seller-detail/seller-detail.component';
+import { SettingsComponent } from './Components/Admin/settings/settings.component';
+import { ProductDetailComponent } from './Components/Products/product-detail/product-detail.component';
+import { BarcodeComponent } from './ExtraComps/barcode/barcode.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,9 @@ import { SellerDetailComponent } from './Components/Sellers/seller-detail/seller
     NotificationComponent,
     NotificationPopComponent,
     SellerDetailComponent,
+    SettingsComponent,
+    ProductDetailComponent,
+    BarcodeComponent,
   ],
   entryComponents: [
     MenuHeaderComponent,
@@ -72,6 +79,7 @@ import { SellerDetailComponent } from './Components/Sellers/seller-detail/seller
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    NgxQRCodeModule,
   ],
   providers: [
     StatusBar,

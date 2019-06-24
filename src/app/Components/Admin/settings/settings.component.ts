@@ -10,6 +10,7 @@ import { AuthService } from '../../../Services/Auth/auth.service';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
+  name: string = 'Settings';
   admin;
   settings;
   showLoader: boolean = false;

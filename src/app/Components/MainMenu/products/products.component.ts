@@ -10,6 +10,8 @@ import { MenuController, NavController } from '@ionic/angular';
 })
 export class ProductsComponent implements OnInit {
 
+  name: string = 'Products';
+
   products: Observable<any>;
   showLoader: boolean = false;
   cats: Observable<any>;

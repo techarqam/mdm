@@ -10,6 +10,7 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./view-sub-category.component.scss'],
 })
 export class ViewSubCategoryComponent implements OnInit {
+  name: string = 'Sub-Categories';
 
   docId;
   cat;

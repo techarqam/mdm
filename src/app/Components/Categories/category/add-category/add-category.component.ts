@@ -9,6 +9,7 @@ import { CategoriesService } from '../../../../Services/Categories/categories.se
   styleUrls: ['./add-category.component.scss'],
 })
 export class AddCategoryComponent implements OnInit {
+  name: string = 'Add Category';
 
   img1: any;
   img2: any;

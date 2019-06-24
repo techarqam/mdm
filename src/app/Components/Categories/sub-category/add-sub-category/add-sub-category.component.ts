@@ -10,6 +10,7 @@ import { CommonService } from '../../../../Services/Common/common.service';
   styleUrls: ['./add-sub-category.component.scss'],
 })
 export class AddSubCategoryComponent implements OnInit {
+  name: string = 'Add Sub-Category';
 
   docId;
 

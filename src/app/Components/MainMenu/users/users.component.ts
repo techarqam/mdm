@@ -10,6 +10,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class UsersComponent implements OnInit {
 
+  name: string = 'Users';
+
   users: Observable<any>;
   showLoader: boolean = true;
 

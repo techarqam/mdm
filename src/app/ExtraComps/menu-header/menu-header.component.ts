@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { NotificationPopComponent } from '../../Components/notifications/notification-pop/notification-pop.component';
 
@@ -8,6 +8,7 @@ import { NotificationPopComponent } from '../../Components/notifications/notific
   styleUrls: ['./menu-header.component.scss'],
 })
 export class MenuHeaderComponent implements OnInit {
+  @Input() name: string;
 
 
   constructor(

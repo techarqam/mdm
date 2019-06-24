@@ -12,6 +12,7 @@ import { SellersService } from '../../../Services/sellers/sellers.service';
   styleUrls: ['./product-detail.component.scss'],
 })
 export class ProductDetailComponent implements OnInit {
+  name: string = 'Product Details';
 
   docId;
   product;

@@ -11,6 +11,8 @@ import { Observable, Subject } from 'rxjs';
 })
 export class BannersComponent implements OnInit {
 
+  name: string = 'Banners';
+
   banners: Observable<any>;
 
   showLoader: boolean = true;

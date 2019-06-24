@@ -9,6 +9,7 @@ import { MenuController, NavController } from '@ionic/angular';
   styleUrls: ['./sellers.component.scss'],
 })
 export class SellersComponent implements OnInit {
+  name: string = 'Sellers';
 
   sellers: Observable<any>;
   showLoader: boolean = false;

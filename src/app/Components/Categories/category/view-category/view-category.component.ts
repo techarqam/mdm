@@ -9,6 +9,7 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./view-category.component.scss'],
 })
 export class ViewCategoryComponent implements OnInit {
+  name: string = 'Categories';
 
   cats: Observable<any>;
 

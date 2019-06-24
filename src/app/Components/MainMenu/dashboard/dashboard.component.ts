@@ -12,6 +12,9 @@ import { UsersService } from '../../../Services/users/users.service';
 })
 export class DashboardComponent implements OnInit {
 
+  name: string = 'Dashboard';
+
+
   banners: number = 0;
   products: number = 0;
   orders: number = 0;

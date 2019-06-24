@@ -9,6 +9,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./add-banners.component.scss'],
 })
 export class AddBannersComponent implements OnInit {
+  name: string = 'Add Banner';
 
   img1: any;
   img2: any;

@@ -12,7 +12,7 @@ import { CommonService } from '../../../Services/Common/common.service';
   styleUrls: ['./seller-detail.component.scss'],
 })
 export class SellerDetailComponent implements OnInit {
-
+  name: string = 'Seller Details';
   docId;
   seller;
   showLoader: boolean = false;

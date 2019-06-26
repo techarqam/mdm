@@ -39,6 +39,9 @@ export class ProductsService {
 
   getProductbySeller(storeId) {
     return this.db.collection("Products", ref => ref.where("storeId", "==", storeId)).snapshotChanges()
-
   }
+  getProductImages(prodId) {
+    return this.db.collection(`Products/${prodId}/Images`).snapshotChanges();
+  }
+
 }

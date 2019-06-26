@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../../Services/products/products.service';
 import { NavController, AlertController } from '@ionic/angular';
 import { CommonService } from '../../../Services/Common/common.service';
 import { CategoriesService } from '../../../Services/Categories/categories.service';
 import { SellersService } from '../../../Services/sellers/sellers.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,6 +19,9 @@ export class ProductDetailComponent implements OnInit {
   product;
   showLoader: boolean = false;
   verified: boolean;
+
+  images: Observable<any>;
+
   constructor(
     private router: ActivatedRoute,
     public prodService: ProductsService,
@@ -28,14 +32,24 @@ export class ProductDetailComponent implements OnInit {
     public sellerService: SellersService,
   ) { }
 
+  @ViewChild('slider', { read: ElementRef }) slider: ElementRef;
+
+
+  sliderOpts = {
+    autoplay: true,
+  };
+
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.docId = params['id'];
+      this.getImages(params['id']);
     });
     this.getProduct();
   }
 
-
+  getImages(prodId) {
+    this.images = this.prodService.getProductImages(prodId);
+  }
   getProduct() {
     this.showLoader = true;
     this.prodService.getSingleProduct(this.docId).subscribe(snap => {

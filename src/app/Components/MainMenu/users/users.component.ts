@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsersService } from '../../../Services/users/users.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-users',
@@ -18,6 +18,7 @@ export class UsersComponent implements OnInit {
   constructor(
     public userService: UsersService,
     public menuCtrl: MenuController,
+    public navCtrl: NavController,
   ) {
     this.menuCtrl.enable(true);
   }
@@ -29,6 +30,10 @@ export class UsersComponent implements OnInit {
   getUsers() {
     this.users = this.userService.getUsers();
     this.users.subscribe(() => { this.showLoader = false });
+  }
+
+  userDetails(id) {
+    this.navCtrl.navigateForward(`users-detail/${id}`)
   }
 
 }

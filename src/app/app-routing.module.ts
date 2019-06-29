@@ -18,6 +18,7 @@ import { SellerDetailComponent } from './Components/Sellers/seller-detail/seller
 import { SettingsComponent } from './Components/Admin/settings/settings.component';
 import { ProductDetailComponent } from './Components/Products/product-detail/product-detail.component';
 import { BarcodeComponent } from './ExtraComps/barcode/barcode.component';
+import { UserDetailComponent } from './Components/Users/user-detail/user-detail.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
+  },
+  {
+    path: 'users-detail/:id',
+    component: UserDetailComponent,
   },
   {
     path: 'add-banner',

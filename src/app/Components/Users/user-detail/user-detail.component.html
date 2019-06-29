@@ -1,0 +1,60 @@
+<app-back-header name="{{name}}"></app-back-header>
+
+
+<ion-content>
+  <app-loader *ngIf="showLoader"></app-loader>
+  <ion-grid *ngIf="!showLoader">
+    <ion-row>
+      <ion-col size="12" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{user.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item>
+                <p slot="start">Email</p>
+                <p slot="end">{{user.mail}}</p>
+              </ion-item>
+              <ion-item>
+                <p slot="start">Phone</p>
+                <p slot="end">{{user.phone}}</p>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Cart</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+
+              <ion-item *ngFor="let i of cart | async">
+                <p slot="start">{{i.payload.doc.data().productName}}</p>
+                <ion-button size="small" fill="clear" slot="end" (click)="gtProduct(i.payload.doc.data().productId)">View</ion-button>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-md="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Orders</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list lines="none">
+              <ion-item *ngFor="let o of orders | async">
+                <p slot="start">{{o.payload.doc.data().productName}}</p>
+                <ion-button size="small" fill="clear" slot="end" (click)="gtProduct(o.payload.doc.data().productId)">View</ion-button>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

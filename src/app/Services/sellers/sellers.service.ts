@@ -19,6 +19,9 @@ export class SellersService {
   getSellers() {
     return this.db.collection("Sellers").snapshotChanges()
   }
+  getallOrders() {
+    return this.db.collection("Orders").snapshotChanges();
+  }
   getSellersbyStatus(status) {
     return this.db.collection("Sellers", ref => ref.where("Status", "==", status)).snapshotChanges()
   }

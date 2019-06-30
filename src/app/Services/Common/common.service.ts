@@ -43,6 +43,9 @@ export class CommonService {
     toast.present();
   }
 
+  getProfits() {
+    return this.db.collection("AdminData").doc("Profits").snapshotChanges();
+  }
 
   async  updateSettings(settings) {
     return this.db.collection("AdminData").doc("Settings").set(settings, { merge: true });

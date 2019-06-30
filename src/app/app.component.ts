@@ -44,7 +44,7 @@ export class AppComponent {
       icon: 'images'
     },
     {
-      title: "Faq's",
+      title: "Support",
       url: '/faqs',
       icon: 'help'
     },

@@ -41,6 +41,10 @@ import { SettingsComponent } from './Components/Admin/settings/settings.componen
 import { ProductDetailComponent } from './Components/Products/product-detail/product-detail.component';
 import { BarcodeComponent } from './ExtraComps/barcode/barcode.component';
 import { UserDetailComponent } from './Components/Users/user-detail/user-detail.component';
+import { FaqsService } from './Services/Faqs/faqs.service';
+import { FaqsComponent } from './Components/MainMenu/faqs/faqs.component';
+import { UserFaqsComponent } from './Components/faqs/user-faqs/user-faqs.component';
+import { VendorFaqsComponent } from './Components/faqs/vendor-faqs/vendor-faqs.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,9 @@ import { UserDetailComponent } from './Components/Users/user-detail/user-detail.
     ProductDetailComponent,
     BarcodeComponent,
     UserDetailComponent,
+    FaqsComponent,
+    UserFaqsComponent,
+    VendorFaqsComponent,
   ],
   entryComponents: [
     MenuHeaderComponent,
@@ -79,7 +86,7 @@ import { UserDetailComponent } from './Components/Users/user-detail/user-detail.
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     NgxQRCodeModule,
   ],
@@ -93,6 +100,7 @@ import { UserDetailComponent } from './Components/Users/user-detail/user-detail.
     UsersService,
     BannersService,
     NotificationsService,
+    FaqsService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

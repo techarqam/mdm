@@ -4,6 +4,7 @@ import { BannersService } from '../../../Services/banners/banners.service';
 import { ProductsService } from '../../../Services/products/products.service';
 import { SellersService } from '../../../Services/sellers/sellers.service';
 import { UsersService } from '../../../Services/users/users.service';
+import { CommonService } from '../../../Services/Common/common.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,13 +22,16 @@ export class DashboardComponent implements OnInit {
   sellers: number = 0;
   users: number = 0;
 
+  //Profits
+  commmProfits: number = 0;
+
   constructor(
     public menuCtrl: MenuController,
     public bannersService: BannersService,
     public prodService: ProductsService,
     public sellerService: SellersService,
     public userService: UsersService,
-
+    public commonService: CommonService,
   ) {
     this.menuCtrl.enable(true);
   }
@@ -37,8 +41,16 @@ export class DashboardComponent implements OnInit {
     this.getProducts();
     this.getSellers();
     this.getUsers();
+    this.getOrders();
+    this.getProfits();
   }
 
+  async getProfits() {
+    this.commonService.getProfits().subscribe(snap => {
+      let temp: any = snap.payload.data();
+      this.commmProfits = temp.commissionProfits;
+    });
+  }
 
 
   async getBanners() {
@@ -52,9 +64,9 @@ export class DashboardComponent implements OnInit {
     })
   }
   async getOrders() {
-    // this..getOrders().subscribe(snap => {
-    //   this.banners = snap.length;
-    // })
+    this.sellerService.getallOrders().subscribe(snap => {
+      this.orders = snap.length;
+    })
   }
   async getSellers() {
     this.sellerService.getSellers().subscribe(snap => {

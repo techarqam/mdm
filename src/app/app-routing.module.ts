@@ -19,6 +19,9 @@ import { SettingsComponent } from './Components/Admin/settings/settings.componen
 import { ProductDetailComponent } from './Components/Products/product-detail/product-detail.component';
 import { BarcodeComponent } from './ExtraComps/barcode/barcode.component';
 import { UserDetailComponent } from './Components/Users/user-detail/user-detail.component';
+import { FaqsComponent } from './Components/MainMenu/faqs/faqs.component';
+import { VendorFaqsComponent } from './Components/faqs/vendor-faqs/vendor-faqs.component';
+import { UserFaqsComponent } from './Components/faqs/user-faqs/user-faqs.component';
 
 const routes: Routes = [
   {
@@ -95,6 +98,18 @@ const routes: Routes = [
   {
     path: 'product-details/:id',
     component: ProductDetailComponent,
+  },
+  {
+    path: 'faqs',
+    component: FaqsComponent,
+  },
+  {
+    path: 'vendor-faqs',
+    component: VendorFaqsComponent,
+  },
+  {
+    path: 'user-faqs',
+    component: UserFaqsComponent,
   },
 
 ];

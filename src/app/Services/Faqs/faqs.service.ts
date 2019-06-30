@@ -16,7 +16,7 @@ export class FaqsService {
       Validators.required,
       Validators.minLength(10)
     ])),
-    userType: new FormControl("User"),
+    userType: new FormControl("User", Validators.required),
   });
   vendorFaqs = new FormGroup({
     question: new FormControl("", Validators.compose([
@@ -27,7 +27,7 @@ export class FaqsService {
       Validators.required,
       Validators.minLength(10)
     ])),
-    userType: new FormControl("Vendor"),
+    userType: new FormControl("Vendor", Validators.required),
   });
 
   constructor(
@@ -39,6 +39,10 @@ export class FaqsService {
 
   addFaq(faq) {
     return this.db.collection("Faqs").add(faq);
+  }
+  delFaq(faqId) {
+
+    return this.db.collection("Faqs").doc(faqId).delete();
   }
 
   getVendorFaqs() {

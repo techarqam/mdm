@@ -24,21 +24,22 @@
           </ion-card-content>
         </ion-card>
 
-        <app-loader *ngIf="!faqs.length"></app-loader>
+        <app-loader *ngIf="showLoader"></app-loader>
 
-        <ion-card *ngIf="faqs.length">
-          <ion-card-header>
-            <ion-card-title>Faq's</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <div *ngFor="let f of faqs ">
-              <p>
-                <span>Q : </span>{{f.question}}</p>
-              <p>
-                <span>A : </span>{{f.answer}}</p>
-            </div>
-          </ion-card-content>
-        </ion-card>
+        <div>
+          <ion-card-title class="ion-padding">Faq's</ion-card-title>
+          <ion-card *ngFor="let f of faqs ">
+            <ion-item lines="none">
+              <ion-card-title>{{f.question}}</ion-card-title>
+              <ion-button color="danger" slot="end" (click)="confirmDelete(f.id)" fill="clear">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-card-content>
+              {{f.answer}}
+            </ion-card-content>
+          </ion-card>
+        </div>
 
 
       </ion-col>

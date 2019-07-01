@@ -1,27 +1,18 @@
 import { Injectable } from '@angular/core';
-
-import { DropdownQuestion } from './../../../mdmSupport/question-dropdown';
-import { QuestionBase } from './../../../mdmSupport/question-base';
-import { TextboxQuestion } from './../../../mdmSupport/question-textbox';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MdmMainService {
-
-
   constructor(
     public db: AngularFirestore,
   ) { }
-
-
   getMDMs() {
     return this.db.collection("MDMMaster").snapshotChanges();
   }
-  getQuestions(collectionName) {
-    
-    return this.db.collection("MDMMaster").doc(collectionName).collection("fields", ref => ref.orderBy('order', 'asc')).snapshotChanges();
+  getFields(mdmName) {
+    return this.db.collection("MDMMaster").doc(mdmName).collection("fields", ref => ref.orderBy('order', 'asc')).valueChanges();
   }
 
 

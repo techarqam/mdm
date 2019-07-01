@@ -10,8 +10,9 @@
     <ion-row>
       <ion-col size="6" size-md="4" *ngFor="let m of mdms | async " (click)="gtSlave(m.payload.doc.id)">
         <ion-card>
-          <ion-card-content class="ion-text-center" >
-            {{m.payload.doc.id | uppercase }}
+          <ion-card-content class="ion-text-center">
+            <img [src]="m.payload.doc.data().icon" />
+            <p> {{m.payload.doc.id | uppercase }}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>

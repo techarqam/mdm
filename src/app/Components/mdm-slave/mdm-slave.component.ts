@@ -14,29 +14,40 @@ export class MdmSlaveComponent implements OnInit {
 
   mdmName: string;
 
-  mdmObservable: Observable<any>;
+  mdmData: Array<any> = [];
+  fields: Array<any> = [];
 
   constructor(
     private router: ActivatedRoute,
     public mdmService: MdmMainService,
     public modalCtrl: ModalController,
-  ) { }
+  ) {
+  }
 
 
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.mdmName = params['id'];
+      this.getFields(params['id']);
       this.getData();
     });
   }
 
+  getFields(mdmName) {
+    this.mdmService.getFields(mdmName).subscribe(snap => {
+      this.fields = snap;
+    })
+  }
+
+
   getData() {
-    this.mdmObservable = this.mdmService.getCollection(this.mdmName);
     this.mdmService.getCollection(this.mdmName).subscribe(snap => {
       snap.forEach(snip => {
-        console.log(snip.payload.doc.data())
+        let temp: any = snip.payload.doc.data();
+        temp.id = snip.payload.doc.id;
+        this.mdmData.push(temp);
       })
-    })
+    });
   }
 
 

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 import { MdmMainService } from 'src/app/Services/MDM/mdmMain/mdm-main.service';
-import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormGroupDirective, FormBuilder } from '@angular/forms';
 import { MdmControlService } from 'src/app/Services/MDM/mdmContol/mdm-control.service';
-import { QuestionBase } from './../../mdmSupport/question-base';
+import { CommonServiceService } from '../../Services/CommonService/common-service.service';
 
 @Component({
   selector: 'app-mdm-add-slave',
@@ -14,45 +14,43 @@ export class MdmAddSlaveComponent implements OnInit {
 
   mdmName: string;
 
-  questions: QuestionBase<any>[] = [];
+  questions: Array<any> = [];
   mdmForm: FormGroup;
   constructor(
     public navParams: NavParams,
     public mdmMainService: MdmMainService,
-    public mdmControl: MdmControlService,
     public modalCtrl: ModalController,
+    public fb: FormBuilder,
+    public commonService: CommonServiceService,
   ) {
     this.mdmName = this.navParams.get("mdmName");
-    this.getQuestions();
   }
 
   ngOnInit() {
-
-    this.mdmMainService.getQuestions(this.mdmName).subscribe(snap => {
-      snap.forEach(snip => {
-        let temp: any = snip.payload.doc.data();
-        this.questions.push(temp);
-      })
+    let group: any = {};
+    this.mdmMainService.getFields(this.mdmName).subscribe(snap => {
+      this.questions = snap;
+      this.questions.forEach(question => {
+        group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+          : new FormControl(question.value || '');
+      });
+      this.mdmForm = this.fb.group(group);
     });
-    this.mdmForm = this.mdmControl.toFormGroup(this.questions);
-
   }
-
-
-  getQuestions() {
-
-  }
-
 
 
 
 
   onSubmit() {
     let temp = this.mdmForm.value;
-    console.log(temp)
-    // this.mdmMainService.addDoc(this.mdmName, temp).then(() => {
-    //   this.mdmForm.reset();
-    // });
+    if (this.mdmForm.valid) {
+      this.mdmMainService.addDoc(this.mdmName, temp).then(() => {
+        this.close();
+        this.mdmForm.reset();
+      });
+    } else {
+      this.commonService.presentToast("Try again");
+    }
   }
 
   close() {

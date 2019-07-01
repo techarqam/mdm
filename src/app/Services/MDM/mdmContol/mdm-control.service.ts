@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { QuestionBase } from './../../../mdmSupport/question-base';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +8,8 @@ import { QuestionBase } from './../../../mdmSupport/question-base';
 export class MdmControlService {
 
   constructor() { }
-  toFormGroup(questions: QuestionBase<any>[]) {
+  toFormGroup(questions: Array<any>) {
     let group: any = {};
-
     questions.forEach(question => {
       group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
         : new FormControl(question.value || '');

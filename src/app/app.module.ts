@@ -6,79 +6,28 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { firebaseConfig } from './firebaseConfig';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from "@angular/forms";
-import { DashboardComponent } from './Components/MainMenu/dashboard/dashboard.component';
-import { AuthService } from './Services/Auth/auth.service';
-import { CommonService } from './Services/Common/common.service';
-import { LoginComponent } from './Components/Auth/login/login.component';
-import { MenuHeaderComponent } from './ExtraComps/menu-header/menu-header.component';
+import { MdmMasterComponent } from './Components/mdm-master/mdm-master.component';
+import { MdmMainService } from './Services/MDM/mdmMain/mdm-main.service';
+import { MdmControlService } from './Services/MDM/mdmContol/mdm-control.service';
+import { MdmSlaveComponent } from './Components/mdm-slave/mdm-slave.component';
 import { BackHeaderComponent } from './ExtraComps/back-header/back-header.component';
-import { LoaderComponent } from './ExtraComps/loader/loader.component';
-import { ProductsService } from './Services/products/products.service';
-import { SellersService } from './Services/sellers/sellers.service';
-import { UsersService } from './Services/users/users.service';
-import { BannersService } from './Services/banners/banners.service';
-import { BannersComponent } from './Components/MainMenu/banners/banners.component';
-import { ProductsComponent } from './Components/MainMenu/products/products.component';
-import { SellersComponent } from './Components/MainMenu/sellers/sellers.component';
-import { UsersComponent } from './Components/MainMenu/users/users.component';
-import { AddBannersComponent } from './Components/banners/add-banners/add-banners.component';
-import { AddCategoryComponent } from './Components/Categories/category/add-category/add-category.component';
-import { ViewCategoryComponent } from './Components/Categories/category/view-category/view-category.component';
-import { AddSubCategoryComponent } from './Components/Categories/sub-category/add-sub-category/add-sub-category.component';
-import { ViewSubCategoryComponent } from './Components/Categories/sub-category/view-sub-category/view-sub-category.component';
-import { NotificationComponent } from './Components/notifications/notification/notification.component';
-import { NotificationPopComponent } from './Components/notifications/notification-pop/notification-pop.component';
-import { NotificationsService } from './Services/Notifications/notifications.service';
-import { SellerDetailComponent } from './Components/Sellers/seller-detail/seller-detail.component';
-import { SettingsComponent } from './Components/Admin/settings/settings.component';
-import { ProductDetailComponent } from './Components/Products/product-detail/product-detail.component';
-import { BarcodeComponent } from './ExtraComps/barcode/barcode.component';
-import { UserDetailComponent } from './Components/Users/user-detail/user-detail.component';
-import { FaqsService } from './Services/Faqs/faqs.service';
-import { FaqsComponent } from './Components/MainMenu/faqs/faqs.component';
-import { UserFaqsComponent } from './Components/faqs/user-faqs/user-faqs.component';
-import { VendorFaqsComponent } from './Components/faqs/vendor-faqs/vendor-faqs.component';
-
+import { MdmAddSlaveComponent } from './Components/mdm-add-slave/mdm-add-slave.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    LoginComponent,
-    MenuHeaderComponent,
+    MdmMasterComponent,
+    MdmSlaveComponent,
     BackHeaderComponent,
-    LoaderComponent,
-    BannersComponent,
-    ProductsComponent,
-    SellersComponent,
-    UsersComponent,
-    AddBannersComponent,
-    AddCategoryComponent,
-    ViewCategoryComponent,
-    AddSubCategoryComponent,
-    ViewSubCategoryComponent,
-    NotificationComponent,
-    NotificationPopComponent,
-    SellerDetailComponent,
-    SettingsComponent,
-    ProductDetailComponent,
-    BarcodeComponent,
-    UserDetailComponent,
-    FaqsComponent,
-    UserFaqsComponent,
-    VendorFaqsComponent,
+    MdmAddSlaveComponent,
   ],
   entryComponents: [
-    MenuHeaderComponent,
     BackHeaderComponent,
-    LoaderComponent,
-    NotificationPopComponent,
+    MdmAddSlaveComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,19 +37,12 @@ import { VendorFaqsComponent } from './Components/faqs/vendor-faqs/vendor-faqs.c
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
-    NgxQRCodeModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    AuthService,
-    CommonService,
-    ProductsService,
-    SellersService,
-    UsersService,
-    BannersService,
-    NotificationsService,
-    FaqsService,
+    MdmMainService,
+    MdmControlService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

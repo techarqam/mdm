@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
 import { MdmMainService } from 'src/app/Services/MDM/mdmMain/mdm-main.service';
 import { FormGroup, FormControl, Validators, FormGroupDirective, FormBuilder } from '@angular/forms';
-import { MdmControlService } from 'src/app/Services/MDM/mdmContol/mdm-control.service';
 import { CommonServiceService } from '../../Services/CommonService/common-service.service';
 
 @Component({
@@ -31,8 +30,18 @@ export class MdmAddSlaveComponent implements OnInit {
     this.mdmMainService.getFields(this.mdmName).subscribe(snap => {
       this.questions = snap;
       this.questions.forEach(question => {
-        group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-          : new FormControl(question.value || '');
+        let valArr: Array<any> = [];
+        if (question.required) { valArr.push(Validators.required); }
+        if (question.pattern) { valArr.push(Validators.pattern(question.pattern)); }
+        if (question.minLength) { valArr.push(Validators.minLength(question.minLength)); }
+        if (question.maxLength) { valArr.push(Validators.maxLength(question.maxLength)); }
+        group[question.key] =
+          question.required ?
+            new FormControl(question.value || '', Validators.compose(valArr))
+            : new FormControl(question.value || '');
+
+
+
       });
       this.mdmForm = this.fb.group(group);
     });
@@ -49,6 +58,7 @@ export class MdmAddSlaveComponent implements OnInit {
         this.mdmForm.reset();
       });
     } else {
+      console.log(this.mdmForm.value)
       this.commonService.presentToast("Try again");
     }
   }

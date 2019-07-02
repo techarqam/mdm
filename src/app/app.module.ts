@@ -13,7 +13,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ReactiveFormsModule } from "@angular/forms";
 import { MdmMasterComponent } from './Components/mdm-master/mdm-master.component';
 import { MdmMainService } from './Services/MDM/mdmMain/mdm-main.service';
-import { MdmControlService } from './Services/MDM/mdmContol/mdm-control.service';
 import { MdmSlaveComponent } from './Components/mdm-slave/mdm-slave.component';
 import { BackHeaderComponent } from './ExtraComps/back-header/back-header.component';
 import { MdmAddSlaveComponent } from './Components/mdm-add-slave/mdm-add-slave.component';
@@ -42,7 +41,6 @@ import { MdmAddSlaveComponent } from './Components/mdm-add-slave/mdm-add-slave.c
     StatusBar,
     SplashScreen,
     MdmMainService,
-    MdmControlService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

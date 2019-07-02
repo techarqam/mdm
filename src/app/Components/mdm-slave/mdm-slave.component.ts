@@ -23,13 +23,14 @@ export class MdmSlaveComponent implements OnInit {
     public modalCtrl: ModalController,
   ) {
   }
-
-
+  
+  
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.mdmName = params['id'];
       this.getFields(params['id']);
       this.getData();
+      this.addMDM();
     });
   }
 

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MdmMainService } from '../../Services/MDM/mdmMain/mdm-main.service';
-import { MdmControlService } from '../../Services/MDM/mdmContol/mdm-control.service';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NavController } from '@ionic/angular';
